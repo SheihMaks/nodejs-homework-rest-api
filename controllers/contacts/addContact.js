@@ -1,6 +1,5 @@
-const contacts=require("../../models/contacts");
 const {RequestError}=require("../../helpers");
-const {addSchema}=require("../../schemas/contact");
+const {Contact,addSchema}=require("../../models");
 
 const addContact= async (req, res) => {
     const {error}=addSchema.validate(req.body)
@@ -8,7 +7,7 @@ const addContact= async (req, res) => {
     throw RequestError(400, error.message)
     }
     const {body}=req;
-    const result= await contacts.addContact(body)
+    const result= await Contact.create(body)
     res.status(201).json(result)
 }
 
