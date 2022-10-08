@@ -1,5 +1,6 @@
 const Joi=require("joi")
 const {Schema,model}=require("mongoose")
+const {handleSaveErrors}=require("../middlewares")
 
 
 
@@ -18,15 +19,11 @@ const contactSchema=new Schema({
       type: Boolean,
       default: false,
     },
-  })
+  },{versionKey:false, timestamps:true})
 
-const handleSaveError=(error,data,next)=>{
-const {name,code}=error;
-error.status=(name==="MongoServerError" && code===11000) ? 409 : 400;
-next();
-}
 
-contactSchema.post("save",handleSaveError)
+
+contactSchema.post("save",handleSaveErrors)
 
   const Contact=model("contact", contactSchema)
 
@@ -35,7 +32,7 @@ contactSchema.post("save",handleSaveError)
     email:Joi.string().required(),
     phone:Joi.string().required(),
     favorite:Joi.boolean(),
-  },{versionKey:false, timestamps:true})
+  })
 
 const schemas={
   addSchema,
