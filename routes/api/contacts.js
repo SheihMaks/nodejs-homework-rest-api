@@ -18,4 +18,6 @@ router.delete('/:contactId', isValidId, cntrlWrapper(cntrl.removeContact));
 
 router.put('/:contactId', isValidId, cntrlWrapper(cntrl.updateContact));
 
+// router.patch('/:contactId', isValidId, cntrlWrapper(cntrl.updateContact));
+
 module.exports = router;
