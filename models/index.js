@@ -1,8 +1,8 @@
-const {Contact,addSchema}=require("./contact")
+const {Contact,schemas}=require("./contact")
 
 
 
 module.exports={
     Contact,
-    addSchema,
+    schemas,
 }

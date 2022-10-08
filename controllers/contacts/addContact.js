@@ -1,8 +1,8 @@
 const {RequestError}=require("../../helpers");
-const {Contact,addSchema}=require("../../models");
+const {Contact,schemas}=require("../../models");
 
 const addContact= async (req, res) => {
-    const {error}=addSchema.validate(req.body)
+    const {error}=schemas.addSchema.validate(req.body)
     if(error){
     throw RequestError(400, error.message)
     }
