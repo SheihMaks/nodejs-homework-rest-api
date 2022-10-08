@@ -1,13 +1,13 @@
 const getAll=require("./getAll");
-// const getById=require("./getById");
+const getById=require("./getById");
 const addContact=require("./addContact");
 // const removeContact=require("./removeContact");
-// const updateContact=require("./updateContact");
+const updateContact=require("./updateContact");
 
 module.exports={
     getAll,
-    // getById,
+    getById,
     addContact,
     // removeContact,
-    // updateContact
+    updateContact
 }
