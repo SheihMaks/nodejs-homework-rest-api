@@ -35,12 +35,12 @@ contactSchema.post("save",handleSaveErrors)
   })
 
   const updateFavoriteSchema=Joi.object({
-    favorite:Joi.boolean().required,
+    favorite:Joi.boolean().required(),
   })
 
 const schemas={
   addSchema,
-  updateFavoriteSchema
+  updateFavoriteSchema,
 }
 
   module.exports={

@@ -4,7 +4,7 @@ const {Contact,schemas}=require("../../models");
 const addContact= async (req, res) => {
     const {error}=schemas.addSchema.validate(req.body)
     if(error){
-    throw RequestError(400, error.message)
+    throw RequestError(400)
     }
     const {body}=req;
     const result= await Contact.create(body)
