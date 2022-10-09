@@ -1,15 +1,13 @@
-const contacts=require("../../models/contacts");
+const {Contact,schemas}=require("../../models");
 const {RequestError}=require("../../helpers");
-const {addSchema}=require("../../schemas/contact");
 
-const updateContact= async (req, res, next) => {
-    const {error}=addSchema.validate(req.body)
+const updateContact= async (req, res) => {
+    const {error}=schemas.addSchema.validate(req.body)
     if(error){
-    throw RequestError(400,error.message)
+    throw RequestError(400)
     }
-    const {body}=req.body
     const {contactId}=req.params;
-    const result=await contacts.updateContact(contactId,body)
+    const result=await Contact.findByIdAndUpdate(contactId,req.body,{new:true})
     if(!result){
     throw RequestError(404,'Not found')
     }
