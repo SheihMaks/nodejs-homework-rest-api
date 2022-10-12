@@ -29,10 +29,9 @@ userSchema.post("save",handleSaveErrors);
 const User=model("user", userSchema);
 
 const schemaRegistration=Joi.object({
-    name:Joi.string().required(),
     email:Joi.string().required(),
     password:Joi.string().required(),
-    
+    subscription:Joi.string(),
 })
 
 const schemaLogin=Joi.object({
