@@ -1,5 +1,5 @@
 const signUp= require("./signUp");
-
+const logIn= require("./logIn");
 
 
 
@@ -8,4 +8,5 @@ const signUp= require("./signUp");
 
 module.exports={
     signUp,
+    logIn,
 }
