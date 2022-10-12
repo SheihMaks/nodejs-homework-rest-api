@@ -6,4 +6,6 @@ const cntrlWrapper= require("../../helpers");
 
 const cntrl= require("../../controllers/auth");
 
-router.post=("/users/signup", cntrlWrapper(cntrl.signUp))
+router.post('/users/signup', cntrlWrapper(cntrl.signUp))
+
+module.exports=router;
