@@ -4,20 +4,20 @@ const router = express.Router()
 
 const cntrl=require("../../controllers/contacts");
 
-const {isValidId}=require("../../middlewares");
+const {isValidId,authenticate}=require("../../middlewares");
 
 const {cntrlWrapper}= require("../../helpers")
 
-router.get('/', cntrlWrapper(cntrl.getAll));
+router.get('/', authenticate, cntrlWrapper(cntrl.getAll));
 
-router.get('/:contactId', isValidId, cntrlWrapper(cntrl.getById));
+router.get('/:contactId', authenticate, isValidId, cntrlWrapper(cntrl.getById));
 
-router.post('/', cntrlWrapper(cntrl.addContact));
+router.post('/', authenticate, cntrlWrapper(cntrl.addContact));
 
-router.delete('/:contactId', isValidId, cntrlWrapper(cntrl.removeContact));
+router.delete('/:contactId', authenticate, isValidId, cntrlWrapper(cntrl.removeContact));
 
-router.put('/:contactId', isValidId, cntrlWrapper(cntrl.updateContact));
+router.put('/:contactId', authenticate, isValidId, cntrlWrapper(cntrl.updateContact));
 
-router.patch('/:contactId/favorite', isValidId, cntrlWrapper(cntrl.updateFavorite));
+router.patch('/:contactId/favorite', authenticate, isValidId, cntrlWrapper(cntrl.updateFavorite));
 
 module.exports = router;

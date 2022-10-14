@@ -1,6 +1,6 @@
 const Joi=require("joi")
 const {Schema,model}=require("mongoose")
-const {handleSaveErrors}=require("../middlewares")
+const {handleSaveErrors}=require("../helpers")
 
 
 
@@ -25,7 +25,7 @@ const contactSchema=new Schema({
 
 contactSchema.post("save",handleSaveErrors)
 
-  const Contact=model("contact", contactSchema)
+const Contact=model("contact", contactSchema)
 
   const addSchema=Joi.object({
     name:Joi.string().required(),
