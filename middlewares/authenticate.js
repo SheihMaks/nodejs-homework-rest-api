@@ -5,22 +5,29 @@ const {SECRET_KEY}=process.env;
 
 const authenticate=async(req,res,next)=>{
     try{
-        const {authorization}= req.headers;
-        const {bearer=" ",token=" "}= authorization.split(" ");
+        const {authorization=""}= req.headers;
+        console.log(authorization)
+        
+        const [bearer,token]= authorization.split(" ");
+        console.log(bearer)
+        console.log(token)
         if(bearer!=="Bearer"){
             throw RequestError(401)
         }
         try{
+            
             const{id}= jwt.verify(token,SECRET_KEY);
+            console.log(id)
             const user= await User.findById(id);
             if(!user){
-                throw Error()
+                throw Error("Unatorized")
             }
+            next()
         } 
         catch(error){
             throw RequestError(401)
         }
-    } 
+        } 
     catch(error){
         next(error)
     }
