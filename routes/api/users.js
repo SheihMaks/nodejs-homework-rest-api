@@ -16,4 +16,6 @@ router.get('/current',authenticate, cntrlWrapper(cntrl.getCurrent))
 
 router.get('/logout', authenticate, cntrlWrapper(cntrl.logOut))
 
+router.patch('/', authenticate, cntrlWrapper(cntrl.updateSubscription))
+
 module.exports=router;

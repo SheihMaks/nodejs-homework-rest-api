@@ -39,9 +39,14 @@ const schemaLogin=Joi.object({
     password:Joi.string().required(),
 })
 
+const updateSubscriptionSchema=Joi.object({
+    subscription:Joi.string().required(),
+})
+
 const schemasAuth={
     schemaRegistration,
     schemaLogin,
+    updateSubscriptionSchema,
 }
 
 module.exports={
