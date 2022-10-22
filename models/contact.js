@@ -1,6 +1,6 @@
 const Joi=require("joi")
 const {Schema,model}=require("mongoose")
-const {handleSaveErrors}=require("../middlewares")
+const {handleSaveErrors}=require("../helpers")
 
 
 
@@ -19,13 +19,18 @@ const contactSchema=new Schema({
       type: Boolean,
       default: false,
     },
+    owner:{
+      type:Schema.Types.ObjectId,
+      ref: "user",
+      required:true,
+    }
   },{versionKey:false, timestamps:true})
 
 
 
 contactSchema.post("save",handleSaveErrors)
 
-  const Contact=model("contact", contactSchema)
+const Contact=model("contact", contactSchema)
 
   const addSchema=Joi.object({
     name:Joi.string().required(),
