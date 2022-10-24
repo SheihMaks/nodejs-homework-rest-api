@@ -2,7 +2,6 @@ const fs= require("fs/promises");
 const path= require("path");
 const {User}= require("../../models");
 const {RequestError}= require("../../helpers");
-const { json } = require("express");
 
 const avatarDir= path.join(__dirname, "../../", "public", "avatar");
 
