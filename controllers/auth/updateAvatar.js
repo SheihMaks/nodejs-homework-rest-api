@@ -1,10 +1,9 @@
 const Jimp= require("jimp");
 const fs= require("fs/promises");
 const path= require("path");
-const {User}= require("../../models");
-const {RequestError}= require("../../helpers");
+const {User}= require("../../models/user");
 
-const avatarDir= path.join(__dirname, "../../", "public", "avatar");
+const avatarDir= path.join(__dirname, "../../", "public", "avatars");
 
 const updateAvatar= async(req,res)=>{
     try{
