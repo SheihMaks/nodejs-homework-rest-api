@@ -20,6 +20,10 @@ const userSchema= new Schema ({
         required:true,
         default: "starter"
     },
+    avatarURL:{
+        type:String,
+        required:true,
+    },
     token: {
         type: String,
         default: null,
