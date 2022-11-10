@@ -10,6 +10,10 @@ const cntrl= require("../controllers/auth");
 
 authRouter.post('/signup',cntrlWrapper(cntrl.signUp))
 
+authRouter.get( '/verify/:verificationToken', cntrlWrapper(cntrl.verify))
+
+authRouter.post('/verify', cntrlWrapper(cntrl.resendVerify))
+
 authRouter.post('/login',cntrlWrapper(cntrl.logIn))
 
 authRouter.get('/current',authenticate, cntrlWrapper(cntrl.getCurrent))
@@ -19,5 +23,6 @@ authRouter.get('/logout', authenticate, cntrlWrapper(cntrl.logOut))
 authRouter.patch('/', authenticate, cntrlWrapper(cntrl.updateSubscription))
 
 authRouter.patch('/avatars', authenticate, upload.single("avatar"), cntrlWrapper(cntrl.updateAvatar))
+
 
 module.exports=authRouter;
